@@ -11,12 +11,10 @@ public class Greeting {
     private final List<Employee> employeeList;
 
 
-    private final List<Map<String, Object>> retList;
-    public Greeting(long id, String content, List<Map<String, Object>> retList, List<Employee> employeeList) {
+    public Greeting(long id, String content, List<Employee> employeeList) {
         this.id = id;
         this.content = content;
 
-        this.retList = retList;
         this.employeeList = employeeList;
     }
 
@@ -32,8 +30,5 @@ public class Greeting {
         return employeeList;
     }
 
-    public List<Map<String, Object>> getRetList() {
-        return retList;
-    }
 
 }
