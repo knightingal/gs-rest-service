@@ -12,5 +12,6 @@ public interface EmployeeMapper {
             "emp_no as empNo, birth_date as birthDate, first_name as firstName, last_name as lastName, gender as gender, hire_date as hireDate " +
             "from employees " +
             "where emp_no < #{empNo}")
+
     List<Employee> queryEmployee(@Param("empNo") int empNo);
 }
