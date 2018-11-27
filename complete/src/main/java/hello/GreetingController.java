@@ -20,10 +20,15 @@ public class GreetingController {
     @Autowired
     private EmployeeMapper employeeMapper;
 
+    @Autowired
+    private EmployeeDao employeeDao;
+
     @RequestMapping("/greeting")
     public Greeting greeting(@RequestParam(value="name", defaultValue="World") String name) {
 
-        List<Employee> employeeList = employeeMapper.queryEmployee(10010);
+//        List<Employee> employeeList = employeeMapper.queryEmployee(10010);
+        Employee condition = new Employee(10010, null, null, null, null,null);
+        List<Employee> employeeList = employeeDao.selectEmployees(condition);
         return new Greeting(counter.incrementAndGet(),
                             String.format(template, name, myBean.getValue()), employeeList);
     }

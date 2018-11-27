@@ -1,19 +1,13 @@
 package hello;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.session.SqlSession;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
-public class EmployeeDao {
-    private final SqlSession sqlSession;
+@Mapper
+public interface EmployeeDao {
 
-    public EmployeeDao(SqlSession sqlSession) {
-        this.sqlSession = sqlSession;
-    }
 
-    public List<Employee> selectEmployees(int seqNo) {
-        return this.sqlSession.selectList("selectEmployees", seqNo);
-    }
+    public List<Employee> selectEmployees(Employee employee);
 }
