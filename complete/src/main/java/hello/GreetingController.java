@@ -1,5 +1,6 @@
 package hello;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -18,17 +19,30 @@ public class GreetingController {
     private MyBean myBean;
 
     @Autowired
-    private EmployeeMapper employeeMapper;
+    private EmployeeMapperByAnnotation employeeMapperByAnnotation;
 
     @Autowired
-    private EmployeeDao employeeDao;
+    private EmployeeByMapperClassDao employeeByMapperClassDao;
+
+    @Autowired
+    private EmployeeBySessionDao employeeBySessionDao;
 
     @RequestMapping("/greeting")
     public Greeting greeting(@RequestParam(value="name", defaultValue="World") String name) {
 
-//        List<Employee> employeeList = employeeMapper.queryEmployee(10010);
+//        List<Employee> employeeList = employeeMapperByAnnotation.queryEmployee(10010);
         Employee condition = new Employee(10010, null, null, null, null,null);
-        List<Employee> employeeList = employeeDao.selectEmployees(condition);
+        List<Employee> employeeList = new ArrayList<>();
+        List<Employee> employeeListBySession = employeeBySessionDao.selectEmployees(condition);
+        employeeList.addAll(employeeListBySession);
+        condition.setEmpNo(10011);
+        List<Employee> employeeListByMapperClass = employeeByMapperClassDao.selectEmployeesByMapperClass(condition);
+        employeeList.addAll(employeeListByMapperClass);
+
+        List<Employee> employeeListByAnnotation = employeeMapperByAnnotation.queryEmployee(10012);
+        employeeList.addAll(employeeListByAnnotation);
+
+
         return new Greeting(counter.incrementAndGet(),
                             String.format(template, name, myBean.getValue()), employeeList);
     }

@@ -4,6 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <mappers>
-        <mapper resource="hello/EmployeeDao.xml"/>
+        <mapper resource="hello/mappers/EmployeeDao.xml"/>
+        <mapper resource="hello/mappers/EmployeeBySessionDao.xml"/>
     </mappers>
 </configuration>

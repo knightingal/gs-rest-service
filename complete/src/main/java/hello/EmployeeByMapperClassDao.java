@@ -6,8 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import java.util.List;
 
 @Mapper
-public interface EmployeeDao {
+public interface EmployeeByMapperClassDao {
 
 
-    public List<Employee> selectEmployees(Employee employee);
+    public List<Employee> selectEmployeesByMapperClass(Employee employee);
 }
