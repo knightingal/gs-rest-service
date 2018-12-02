@@ -1,0 +1,3 @@
+[submodule "complete/src/main/resources/static/fromEnd"]
+	path = complete/src/main/resources/static/fromEnd
+	url = git@github.com:knightingal/flow1000FrontEnd.git

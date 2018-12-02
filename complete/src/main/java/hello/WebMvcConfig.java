@@ -9,5 +9,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/static/**").addResourceLocations("file:/home/knightingal/download/linux1000/source/");
+        registry.addResourceHandler("/dist/**").addResourceLocations("classpath:static/fromEnd/dist/");
+        registry.addResourceHandler("/lib/**").addResourceLocations("classpath:static/fromEnd/node_modules/");
+        registry.addResourceHandler("/frontEnd/**").addResourceLocations("classpath:static/fromEnd/");
     }
 }
